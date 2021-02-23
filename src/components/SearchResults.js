@@ -6,7 +6,7 @@ function SearchResults(props) {
     console.log('Props in  search results', props);
     return(
         <div className="search-results">
-            <Tracklist tracks={searchResults} isInPlaylist={false}/>
+            <Tracklist tracks={searchResults} isInPlaylist={false} addTrack={props.addTrack} removeFromResults={props.removeFromResults}/>
         </div>
     )
 }
