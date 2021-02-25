@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
+import {Spotify} from './Spotify'
 
 function App() {
   // variable to hold an array of search results returned by the spotify search API
