@@ -5,8 +5,11 @@ import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
 import {Spotify} from './Spotify'
+import Login from './components/login';
+
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState();
   // variable to hold an array of search results returned by the spotify search API
   const [searchResults, setSearchResults] = useState([
     {title: 'title1', artist: 'artist1', album: 'album1', id: 1},
@@ -45,6 +48,14 @@ function App() {
       return tracks.filter((track) => track.id !== trackId);
     })
   }
+
+  const handleLogin = (e) => {
+    Spotify.getToken()
+  }
+
+  const handleSearch = () => {
+    Spotify.search(searchTerm);
+  }
   
 
   return (
@@ -54,7 +65,8 @@ function App() {
       </header>
       <div>
         <div className="search">
-          <SearchBar />
+          <Login handleLogin={handleLogin} />
+          <SearchBar setSearchTerm={setSearchTerm} handleSearch={handleSearch} />
         </div>
         {/* This will hold tbe search results and playlist */}
         <div className="track-area">

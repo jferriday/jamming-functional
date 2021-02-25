@@ -40,17 +40,19 @@ export const Spotify = {
 
     },
 
-    search(term) {
+    async search(term) {
         // use the Spotify search API to return an array of tracks from a search term
         const endpoint = 'https://api.spotify.com/v1/search';
+        console.log('Access token used: ' + accessToken);
     
-    
-        fetch(endpoint + 'q=' + term,
+        console.log('searching')
+        await fetch(endpoint + 'q=' + term,
         {method: 'GET',
-        headers: {'Authorization': 'Bearer ' + accessToken}})
+        headers: {'Authorization': 'Bearer ' + accessToken}
+        })
         .then((response) => {
             if(response.ok){
-                return response.json;
+                return response.json();
             }else{
                 throw new console.error('Network Error');
             }
