@@ -25,7 +25,7 @@ export const Spotify = {
         
 
         // Check for an access token and timeout - if so, clear the access token after timeout
-        // timeout is provided by the Spotify API
+        // timeout is provided by the Spotify API 
         if (accessToken !== null && timeOutSeconds !== null){
             setTimeout(() => accessToken = null, timeOutSeconds * 1000);
             return accessToken;
