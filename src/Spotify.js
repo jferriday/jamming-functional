@@ -22,12 +22,17 @@ export const Spotify = {
         // timeout is provided by the Spotify API 
         // search through the redirected URL for token and timeout values
         
-        const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/)
+        const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
+        console.log(accessTokenMatch);
+        if(accessTokenMatch){
+
         accessToken = accessTokenMatch[1];
+        }
         console.log('Access token matched: ', accessToken)
         const timeOutMatch = window.location.href.match(/expires_in=([^&]*)/);
+        if (timeOutMatch){
         timeOutSeconds = timeOutMatch[1];
-
+        }
         
 
         console.log('Access token gained from URL:  ', accessToken)
@@ -52,13 +57,13 @@ export const Spotify = {
     },
 
     async search(term) {
-        
+        accessToken = this.getToken();
         console.log('Token:', accessToken);
         // use the Spotify search API to return an array of tracks from a search term
-        const endpoint = 'https://api.spotify.com/v1/search';
+        const endpoint = 'https://api.spotify.com/v1/search?type=track&';
         console.log('Access token used: ' + accessToken);
     
-        console.log('searching')
+        console.log('searching', accessToken)
         await fetch(endpoint + 'q=' + term,
         {method: 'GET',
         headers: {'Authorization': 'Bearer ' + accessToken}
