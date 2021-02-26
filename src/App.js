@@ -7,7 +7,6 @@ import Playlist from './components/Playlist';
 import {Spotify} from './Spotify'
 import Login from './components/login';
 
-
 function App() {
   const [searchTerm, setSearchTerm] = useState();
   // variable to hold an array of search results returned by the spotify search API
@@ -57,6 +56,7 @@ function App() {
     Spotify.search(searchTerm);
   }
   
+ 
 
   return (
     <div className="app">
