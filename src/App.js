@@ -52,8 +52,18 @@ function App() {
     Spotify.getToken()
   }
 
-  const handleSearch = () => {
-    Spotify.search(searchTerm);
+  const handleSearch = async () => {
+    let tracks;
+   await Spotify.search(searchTerm)
+   .then((response) => tracks = response.tracks);
+    console.log(tracks);
+
+  setSearchResults((prev) => {
+    return tracks.items.map((track) => {
+      return {title: track.name , artist: track.artists[0].name, album: track.album.name, id: track.id }
+    })
+  })
+   
   }
   
  

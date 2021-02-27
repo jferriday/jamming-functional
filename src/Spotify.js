@@ -58,13 +58,11 @@ export const Spotify = {
 
     async search(term) {
         accessToken = this.getToken();
-        console.log('Token:', accessToken);
         // use the Spotify search API to return an array of tracks from a search term
         const endpoint = 'https://api.spotify.com/v1/search?type=track&';
         console.log('Access token used: ' + accessToken);
     
-        console.log('searching', accessToken)
-        await fetch(endpoint + 'q=' + term,
+        const response = await fetch(endpoint + 'q=' + term,
         {method: 'GET',
         headers: {'Authorization': 'Bearer ' + accessToken}
         })
@@ -77,10 +75,10 @@ export const Spotify = {
         })
         // hook up to app to test
         .then((jsonResponse) => {
-            console.log(jsonResponse)
+            return jsonResponse;
         }).catch((e) => console.log(e));
 
-
+        return response
     }
 
 }
