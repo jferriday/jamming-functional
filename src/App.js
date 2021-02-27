@@ -10,18 +10,13 @@ import Login from './components/login';
 function App() {
   const [searchTerm, setSearchTerm] = useState();
   // variable to hold an array of search results returned by the spotify search API
-  const [searchResults, setSearchResults] = useState([
-    {title: 'title1', artist: 'artist1', album: 'album1', id: 1},
-    {title: 'title2', artist: 'artist2', album: 'album2', id: 2},
-    {title: 'title3', artist: 'artist3', album: 'album3', id: 3}
-  ])
+  const [searchResults, setSearchResults] = useState([])
+  // variable to hold playlist name, which is dynamically updates as it is typed into 'name' field
+  const [playlistName, setPlaylistName] = useState("New Playlist");
 
     // variable to hold array of tracks added to the playlist
-  const [playlist, setPlaylist] = useState([
-    {title: 'title3', artist: 'artist3', album: 'album3', id: 3},
-    {title: 'title4', artist: 'artist4', album: 'album4', id: 4},
-    {title: 'title5', artist: 'artist5', album: 'album5', id: 5}
-  ])
+  const [playlist, setPlaylist] = useState([])
+  // Track object structure: {title: 'title3', artist: 'artist3', album: 'album3', id: 3}
 
   /* Code below adds individual tracks to a playlist and removes them from the search results. */
   // Add a track to the playlist
@@ -48,6 +43,10 @@ function App() {
     })
   }
 
+  const handleNameChange = (e) => {
+    setPlaylistName(e.target.value);
+  }
+
   const handleLogin = (e) => {
     Spotify.getToken()
   }
@@ -60,10 +59,17 @@ function App() {
 
   setSearchResults((prev) => {
     return tracks.items.map((track) => {
-      return {title: track.name , artist: track.artists[0].name, album: track.album.name, id: track.id }
-    })
-  })
-   
+      return {title: track.name , artist: track.artists[0].name, album: track.album.name, id: track.uri }
+     })
+   })
+  }
+
+  const handleSave = () => {
+    const success = Spotify.savePlaylist(playlistName, playlist);
+    if (success) {
+      setPlaylist([]);
+      alert('Playlist saved!');
+    }
   }
   
  
@@ -81,7 +87,11 @@ function App() {
         {/* This will hold tbe search results and playlist */}
         <div className="track-area">
           <SearchResults searchResults={searchResults} addTrack={addTrack} removeFromResults={removeFromResults} />
-          <Playlist playlistTracks={playlist} addToResults={addToResults} removeFromPlaylist={removeFromPlaylist} />
+          <Playlist playlistTracks={playlist} 
+          addToResults={addToResults} 
+          removeFromPlaylist={removeFromPlaylist} 
+          handleNameChange={handleNameChange} 
+          handleSave={handleSave}/>
         </div>
         
 

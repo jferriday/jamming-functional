@@ -9,7 +9,7 @@ function Playlist(props) {
     return(
         <div className="playlist">
             <div className="playlist-name">
-                <input type='text' placeholder='New Playlist' />
+                <input type='text' placeholder='New Playlist' onChange={props.handleNameChange} />
             </div>
             <div>
                 {/* IsInPlaylist tells tracks whether to use a + or - symbol for their add/remove button */}
@@ -17,7 +17,7 @@ function Playlist(props) {
                  addToResults={props.addToResults} removeFromPlaylist={props.removeFromPlaylist}/>
             </div>
             <div>
-                <button>SAVE TO SPOTIFY</button>
+                <button onClick={props.handleSave}>SAVE TO SPOTIFY</button>
             </div>
         </div>
     )
