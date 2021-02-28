@@ -14,6 +14,7 @@ const tracks = props.tracks
                  artist={track.artist}
                   album={track.album}
                   id={track.id}
+                  key={track.id}
                   playlist={tracks}
                   addTrack={props.addTrack}
                   removeFromResults={props.removeFromResults}
