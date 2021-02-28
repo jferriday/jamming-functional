@@ -6,6 +6,10 @@ import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
 import {Spotify} from './Spotify'
 import Login from './components/login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, Row, Col, Card} from 'react-bootstrap/';
+
+
 
 function App() {
   const [searchTerm, setSearchTerm] = useState();
@@ -75,28 +79,44 @@ function App() {
  
 
   return (
-    <div className="app">
-      <header>
-        <h1>Jamming</h1>
-      </header>
-      <div>
+    <Container>
+      <Row className="justify-content-md-center" bg="dark"> 
+          <header>
+            <h1>Jamming</h1>
+          </header>
+      </Row>
+
+      <Row>
+        <Col></Col>
+        <Col>
         <div className="search">
           <Login handleLogin={handleLogin} />
-          <SearchBar setSearchTerm={setSearchTerm} handleSearch={handleSearch} />
         </div>
-        {/* This will hold tbe search results and playlist */}
-        <div className="track-area">
-          <SearchResults searchResults={searchResults} addTrack={addTrack} removeFromResults={removeFromResults} />
-          <Playlist playlistTracks={playlist} 
-          addToResults={addToResults} 
-          removeFromPlaylist={removeFromPlaylist} 
-          handleNameChange={handleNameChange} 
-          handleSave={handleSave}/>
-        </div>
-        
+        </Col>
+        <Col></Col>
+      </Row>
+      <Row>
+        <Col>
+          <SearchBar setSearchTerm={setSearchTerm} handleSearch={handleSearch} /> 
+        </Col>  
+        <Col></Col>
+        <Col></Col>
+      </Row>
 
-      </div>
-    </div>   
+      <Row>
+        <Col>
+          <SearchResults searchResults={searchResults} addTrack={addTrack} removeFromResults={removeFromResults} />
+        </Col>
+        <Col></Col>
+        <Col>
+            <Playlist playlistTracks={playlist} 
+            addToResults={addToResults} 
+            removeFromPlaylist={removeFromPlaylist} 
+            handleNameChange={handleNameChange} 
+            handleSave={handleSave}/>
+        </Col>
+      </Row>
+    </Container>  
   );
 }
 
