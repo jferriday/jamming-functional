@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
@@ -19,6 +19,12 @@ function App() {
   // Track object structure: {title: 'title3', artist: 'artist3', album: 'album3', id: 3}
 
   const [loginStatus, setLoginStatus] = useState(false);
+
+  // update login button when logged in
+  const [loginButtonStyle, setLoginButtonStyle] = useState('logged-out');
+  useEffect(() => {
+    logInButtonCheck();
+  })
 
   /* Code below adds individual tracks to a playlist and removes them from the search results. */
   // Add a track to the playlist
@@ -58,9 +64,9 @@ function App() {
 
   const logInButtonCheck = () => {
     if (loginStatus){
-      return 'logged-in';
+      setLoginButtonStyle('logged-in');
     }else{
-      return 'logged-out';
+      setLoginButtonStyle('logged-out');
     }
   }
 
@@ -91,7 +97,7 @@ function App() {
     <div className="app">
       <header className="App-header">
         <h1>Selecta.</h1>
-          <Login className="login-component" handleLogin={handleLogin} loginButtonCheck={logInButtonCheck} />
+          <Login className="login-component" handleLogin={handleLogin} loginButtonCheck={logInButtonCheck} buttonStyle={loginButtonStyle}/>
       </header>
       <div className="grid-container">
         <div className="search track-display">

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Track.css';
 function Track(props) {
     
     const trackButton = () => {
@@ -29,9 +29,13 @@ function Track(props) {
 
     return(
         <div className="track">
-            <h3 className="title">{props.title}</h3>
-            <p className="track-details">{props.album} | {props.artist}</p>
-            {trackButton()}
+            <div className="details">
+                <h3 className="title">{props.title}</h3>
+                <p className="track-details">{props.album} | {props.artist}</p>
+            </div>
+            <div className="add-button">
+                {trackButton()}
+            </div>
         </div>
     )
 }
