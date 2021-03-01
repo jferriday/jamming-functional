@@ -1,5 +1,6 @@
 import React from 'react';
 import Track from './Track.js';
+import '../App.css';
 
 function Tracklist(props) {
 const tracks = props.tracks
@@ -7,7 +8,7 @@ const tracks = props.tracks
 // tracks are passed removal functions from a tracklist in the playlist OR add functions from a tracklist in the search results
 
     return(
-        <div className="tracklist">
+        <div>
             {tracks.map((track) => {
                 return <Track isInPlaylist={props.isInPlaylist}
                  title={track.title} 

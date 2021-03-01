@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css';
 
 function SearchBar (props) {
 const handleChange = (e) => {
@@ -6,10 +7,9 @@ const handleChange = (e) => {
 }
 
 return(
-    <div className="search">
-        <h2>Search for tracks</h2>
-        <input placeholder="Enter a track name, artist or album" type="text" name="searchTerm" onChange={handleChange}></input>
-        <button className="interface-button" onClick={props.handleSearch}>Search</button>
+    <div className='input-area'>
+        <input className="input" placeholder="Enter a track name, artist or album" type="text" name="searchTerm" onChange={handleChange}></input>
+        <button className="button" onClick={props.handleSearch}>SEARCH</button>
 
     </div>
 )

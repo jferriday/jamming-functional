@@ -6,6 +6,15 @@ let timeOutSeconds;
 
 export const Spotify = {
 
+    // checks if logged in
+    isLoggedIn(){
+        if(accessToken){
+            return true;
+        }else{
+            return false;
+        }
+    },
+
     // add scope to the authorisation url
     getToken(){
         // Check if user already has an access token, return it if they do

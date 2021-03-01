@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import React, {useState} from 'react';
 import SearchBar from './components/SearchBar'
@@ -17,6 +17,8 @@ function App() {
     // variable to hold array of tracks added to the playlist
   const [playlist, setPlaylist] = useState([])
   // Track object structure: {title: 'title3', artist: 'artist3', album: 'album3', id: 3}
+
+  const [loginStatus, setLoginStatus] = useState(false);
 
   /* Code below adds individual tracks to a playlist and removes them from the search results. */
   // Add a track to the playlist
@@ -48,7 +50,18 @@ function App() {
   }
 
   const handleLogin = (e) => {
-    Spotify.getToken()
+    const token = Spotify.getToken();
+    if (token) {
+      setLoginStatus(true);
+    }
+  }
+
+  const logInButtonCheck = () => {
+    if (loginStatus){
+      return 'logged-in';
+    }else{
+      return 'logged-out';
+    }
   }
 
   const handleSearch = async () => {
@@ -76,25 +89,22 @@ function App() {
 
   return (
     <div className="app">
-      <header>
-        <h1>Jamming</h1>
+      <header className="App-header">
+        <h1>Selecta.</h1>
+          <Login className="login-component" handleLogin={handleLogin} loginButtonCheck={logInButtonCheck} />
       </header>
-      <div>
-        <div className="search">
-          <Login handleLogin={handleLogin} />
-          <SearchBar setSearchTerm={setSearchTerm} handleSearch={handleSearch} />
+      <div className="grid-container">
+        <div className="search track-display">
+            <SearchBar setSearchTerm={setSearchTerm} handleSearch={handleSearch} />
+            <SearchResults searchResults={searchResults} addTrack={addTrack} removeFromResults={removeFromResults} />
+      </div>
+        <div className="playlist track-display">
+            <Playlist playlistTracks={playlist} 
+            addToResults={addToResults} 
+            removeFromPlaylist={removeFromPlaylist} 
+            handleNameChange={handleNameChange} 
+            handleSave={handleSave}/>
         </div>
-        {/* This will hold tbe search results and playlist */}
-        <div className="track-area">
-          <SearchResults searchResults={searchResults} addTrack={addTrack} removeFromResults={removeFromResults} />
-          <Playlist playlistTracks={playlist} 
-          addToResults={addToResults} 
-          removeFromPlaylist={removeFromPlaylist} 
-          handleNameChange={handleNameChange} 
-          handleSave={handleSave}/>
-        </div>
-        
-
       </div>
     </div>   
   );
