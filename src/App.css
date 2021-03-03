@@ -36,7 +36,7 @@ h1 {
 }
 
 .app {
-  background-color: #282c34;
+  background: url(./background-records.jpg);
 }
 
 /* Components */
@@ -52,7 +52,7 @@ h1 {
 .input {
   width: 100%;
   height: 3rem;
-  background-color: #282c34;
+  background-color: #282c34b6;
   font-size: 2rem;
   color: #ff9028;
   border-radius: 15px 0 0 15px;
@@ -63,11 +63,18 @@ h1 {
 
 .button {
   border-radius:  0 15px 15px 0;
+  padding: .75rem;
   box-shadow: none;
   border: 0;
-  background-color: #282c34;
-  font-size: 1.5rem;
+  background-color: #282c34b6;
+  font-size: 1.25rem;
   color: #ff9028;
+}
+.button:hover {
+  color: #ff7b00;
+}
+.button:active{
+  background-color: #282c34b4;
 }
 
 /* Special classes for login button */
@@ -75,15 +82,20 @@ h1 {
 box-shadow: none;
   border: 0;
   background-color: #282c34;
+  border-radius: 10px;
   font-size: 1.5rem;
   color: #ff9028;
   padding: 15px;
+}
+.logged-out:active {
+  background-color: #282c34;
 }
 
 .logged-in{
   box-shadow: none;
   border: 0;
   background-color: #282c34;
+  border-radius: 10px;
   font-size: 1.5rem;
   color: #68625c;
   padding: 15px;
@@ -113,7 +125,7 @@ box-shadow: none;
 }
 
 .track-display {
-  background-color:#3a3d42;
+  background-color:#3a3d4288;
   color: #ff9028;
   border-radius: 1%;
   overflow-y: scroll;
