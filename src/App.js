@@ -87,7 +87,10 @@ function App() {
     const success = Spotify.savePlaylist(playlistName, playlist);
     if (success) {
       setPlaylist([]);
-      alert('Playlist saved!');
+      setPlaylistName("New Playlist");
+      
+
+      
     }
   }
   
@@ -109,7 +112,8 @@ function App() {
             addToResults={addToResults} 
             removeFromPlaylist={removeFromPlaylist} 
             handleNameChange={handleNameChange} 
-            handleSave={handleSave}/>
+            handleSave={handleSave}
+            playlistName={playlistName}/>
         </div>
       </div>
     </div>   

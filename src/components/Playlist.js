@@ -10,7 +10,7 @@ function Playlist(props) {
     return(
         <div>
             <div className="input-area">
-                <input className="input" type='text' placeholder='New Playlist' onChange={props.handleNameChange} />
+                <input className="input" type='text' placeholder='New Playlist' value={props.playlistName} onChange={props.handleNameChange} />
                 <button className="button" onClick={props.handleSave}>SAVE</button>
             </div>
             <div className="tracklist">
