@@ -129,6 +129,32 @@ box-shadow: none;
 }
 
 
+
+.track-display {
+  background-color:#3a3d4288;
+  color: #ff9028;
+  border-radius: 1%;
+  overflow-y: scroll;
+  padding: 5% 5%;
+  
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.track-display::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+}
+
+
+
+.track-display::-webkit-scrollbar-thumb {
+  background-color: #282c3452;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #282c3400
+  
+}
+
 @media screen and (max-width: 1000px) {
 
   .logged-in, .logged-out {
@@ -161,31 +187,5 @@ box-shadow: none;
      grid-column: 2 / 3;
    }
 }
-
-.track-display {
-  background-color:#3a3d4288;
-  color: #ff9028;
-  border-radius: 1%;
-  overflow-y: scroll;
-  padding: 5% 5%;
-
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-
-.track-display::-webkit-scrollbar {
-  width: 10px;               /* width of the entire scrollbar */
-}
-
-
-
-.track-display::-webkit-scrollbar-thumb {
-  background-color: #282c3452;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid #282c3400
-  
-}
-
 
 
