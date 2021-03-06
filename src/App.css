@@ -86,6 +86,8 @@ box-shadow: none;
   font-size: 1.5rem;
   color: #ff9028;
   padding: 15px;
+  width: 15rem;
+  height: 3.5rem;
 }
 .logged-out:active {
   background-color: #282c34;
@@ -97,8 +99,10 @@ box-shadow: none;
   background-color: #282c34;
   border-radius: 10px;
   font-size: 1.5rem;
-  color: #68625c;
+  color: #0caf22;
   padding: 15px;
+  width: 15rem;
+  height: 3.5rem;
 }
 
 
@@ -122,6 +126,40 @@ box-shadow: none;
 .playlist {
   grid-row: 2 /3;
   grid-column: 4 / 5;
+}
+
+
+@media screen and (max-width: 1000px) {
+
+  .logged-in, .logged-out {
+    font-size: 1rem;
+    padding: 5%;
+    width: 10rem;
+  height: 3.5rem;
+  margin-left: 25px;
+
+  }
+  .app {
+    background-size: cover ;
+    
+  }
+  
+.grid-container {
+  overflow-y:scroll;
+  display: grid;
+  grid-template-rows: 10% 80% 10% 80% 10%;
+  grid-template-columns: 5% 1fr 5%;
+}
+
+  .search {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+   }
+   
+   .playlist {
+     grid-row: 4 / 5;
+     grid-column: 2 / 3;
+   }
 }
 
 .track-display {
@@ -148,5 +186,6 @@ box-shadow: none;
   border: 3px solid #282c3400
   
 }
+
 
 

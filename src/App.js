@@ -19,6 +19,7 @@ function App() {
   // Track object structure: {title: 'title3', artist: 'artist3', album: 'album3', id: 3}
 
   const [loginStatus, setLoginStatus] = useState(false);
+  const [loginMessage, setLoginMessage] = useState("Log In")
 
   // update login button when logged in
   const [loginButtonStyle, setLoginButtonStyle] = useState('logged-out');
@@ -65,12 +66,19 @@ function App() {
   const logInButtonCheck = () => {
     if (loginStatus){
       setLoginButtonStyle('logged-in');
+      setLoginMessage("Logged in")
+      
     }else{
       setLoginButtonStyle('logged-out');
+      setLoginMessage("Log in With Spotify")
     }
   }
 
   const handleSearch = async () => {
+    if (!loginStatus){
+      alert("Please log in with Spotify")
+     return; 
+    }
     let tracks;
    await Spotify.search(searchTerm)
    .then((response) => tracks = response.tracks);
@@ -100,7 +108,7 @@ function App() {
     <div className="app">
       <header className="App-header">
         <h1>Selecta.</h1>
-          <Login className="login-component" handleLogin={handleLogin} loginButtonCheck={logInButtonCheck} buttonStyle={loginButtonStyle}/>
+          <Login className="login-component" handleLogin={handleLogin} loginButtonCheck={logInButtonCheck} loginMsg={loginMessage} buttonStyle={loginButtonStyle}/>
       </header>
       <div className="grid-container">
         <div className="search track-display">
